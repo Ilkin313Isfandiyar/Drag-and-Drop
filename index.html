@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+<style>
+#div1, #div2 {
+  float: left;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#div1{
+    background-color: lime;
+}
+#div2{
+    background-color: yellow;
+}
+
+img{
+    width: 250px;
+    position: relative;
+    top: 25px;
+    left: 25px;
+
+}
+
+body{
+    display: flex;
+    justify-content: space-around;
+    background-color: aqua;
+}
+
+.h1{
+    padding-top: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="https://stat.overdrive.in/wp-content/odgallery/2020/06/57263_2020_Mercedes_Benz_GLS.jpg" draggable="true" ondragstart="drag(event)" id="drag1">
+</div>
+
+<div class="h1">
+    <h1>TRANSFER</h1>
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+<script>
+    const header = document.querySelector("h1")
+    
+    
+    
+    function allowDrop(ev) {
+      ev.preventDefault();
+      
+    }
+    
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+        
+      header2()
+    }
+    
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+      header1()
+    
+    }
+    
+    function header1(){
+        header.style.color = "white"
+    }
+
+    function header2(){
+        header.style.color = "red"
+    }
+    
+    
+    </script>
+
+</body>
+</html>
+
